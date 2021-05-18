@@ -18,7 +18,7 @@
 
 .header__middle {
     display: flex;
-    flex: 0.7 1 0%;
+    flex: 0.7 1 0;
     align-items: center;
     background-color: whitesmoke;
     padding: 10px;
