@@ -19,26 +19,22 @@ import {createSlice} from '@reduxjs/toolkit';
 //   }
 // );
 
-export const mailSlice = createSlice({
-    name: 'mail',
+export const userSlice = createSlice({
+    name: 'user',
     initialState: {
-        selectedMail: null,
-        sendMessageIsOpen: false,
+        user: null,
     },
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
-        selectMail: (state, action) => {
-            state.selectedMail = action.payload;
+        login: (state, action) => {
+            state.user = action.payload;
         },
-        openSendMessage: (state) => {
+        logout: (state) => {
     // Redux Toolkit allows us to write "mutating" logic in reducers. It
     // doesn't actually mutate the state because it uses the Immer library,
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
-            state.sendMessageIsOpen = true;
-        },
-        closeSendMessage: (state) => {
-            state.sendMessageIsOpen = false;
+            state.user = null;
         },
 // Use the PayloadAction type to declare the contents of `action.payload`
 // incrementByAmount: (state, action) => {
@@ -59,19 +55,14 @@ export const mailSlice = createSlice({
 // },
 });
 
-export const {
-    selectMail,
-    openSendMessage,
-    closeSendMessage,
-    incrementByAmount
-} = mailSlice.actions;
+export const {login, logout} = userSlice.actions;
 
-export const selectOpenMail = (state) => state.mail.selectedMail;
+export const selectUser = (state) => state.user.user;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectSendMessageIsOpen = (state) => state.mail.sendMessageIsOpen;
+
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
@@ -82,4 +73,4 @@ export const selectSendMessageIsOpen = (state) => state.mail.sendMessageIsOpen;
 //   }
 // };
 
-export default mailSlice.reducer;
+export default userSlice.reducer;
